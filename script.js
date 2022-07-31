@@ -24,20 +24,54 @@ function rockPaperScissorsGame () {
     let playerNumberOfWins = 0;
 
     // do this until playerNumberOfWins is 3 OR computerNumberOfWins is 3
+    let winnerFound = false;
     for (let i = 0; i < 5; i++) {
 
         // play a round of rock paper scissors, and return the winner
         let winner = rockPaperScissorsRound();
-        console.log(winner);
 
         // if the winner was player, increment playerNumberOfWins
-
+        if (winner === "player") {
+            playerNumberOfWins++;
+        }
         // else, increment computerNumberOfWins
+        else {
+            computerNumberOfWins++;
+        }
 
         // if the player has 3 wins or the computer has 3 wins, stop the game. 
+        if (playerNumberOfWins >= 3) {
+            winnerFound = true;
+        }
+        if (computerNumberOfWins >= 3) {
+            winnerFound = true;
+        }
 
+        if (winnerFound) {
+            break;
+        }
     }
-    // print the final winner message
+
+    // Determine who the winner is
+    let winner = ''; 
+    if (computerNumberOfWins >= 3) {
+        winner = "computer";
+    }
+    else if (playerNumberOfWins >= 3) {
+        winner = "player";
+    }
+
+    // print the winner message to the user
+    if (winner === "computer") {
+        console.log(`Sorry mate, the computer beat you at rock paper scissors with a final score of ${computerNumberOfWins} to ${playerNumberOfWins}`);
+    }
+    else if (winner === "player") {
+        console.log(`You won! You defeated the computer at rock paper scissors with a final score of ${playerNumberOfWins} to ${computerNumberOfWins}`);
+    }
+    else {
+        console.log("error, there appears to be no winner.");
+    }
+
 
 }
 
