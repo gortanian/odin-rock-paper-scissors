@@ -77,12 +77,43 @@ function rockPaperScissorsGame () {
 
 // create a function called rockPaperScissorsRound, that returns the winner or a rock paper scissors round. 
 function rockPaperScissorsRound() {
-    return "player"; // temporary
-    // Ask for their input, storing it in a variable. 
+
+    // Ask for user input, storing it in a variable. 
+    let userInput = prompt("choose rock, paper, or scissors (type it in)")
+
+    // check if user input is either rock, paper, or scissors, and store it in user choice
+    // initialize a variable called userChoice
+    let userChoice = '';
+
+    // first, check if it's rock
+    if (userInput.toUpperCase() === "ROCK") {
+        userChoice = "Rock";
+    }
+
+    // then, check if it's paper
+    else if (userInput.toUpperCase() === "PAPER") {
+        userChoice = "Paper";
+    }
+
+    // finally, check if it's scissors
+    else if (userInput.toUpperCase() === "SCISSORS") {
+        userChoice = "Scissors";
+    }
+
+    // if it was none of these, set userChoice to Invalid
+    else {
+        userChoice = "Invalid"
+    }
+
+    console.log("you chose " + userChoice);
+
 
     // store a random choice between rock paper and scissors for the computer
 
     // compare the choices, and decide the winner
 
     // print the results of the round to the console. 
+
+    // return the winner
+    return "computer";
 }
