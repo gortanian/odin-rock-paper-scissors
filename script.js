@@ -85,24 +85,31 @@ function rockPaperScissorsGame () {
 function rockPaperScissorsRound() {
 
     // Ask for user input, storing it in a variable. 
-    let userInput = prompt("choose rock, paper, or scissors (type it in)")
+    let userInput = prompt("choose rock, paper, or scissors (type it in)");
+    let upperUserInput = userInput.toUpperCase().trim();
+
+    // If the upperUserInput doesnt equal ROCK, PAPER, or SCISSORS, keep asking for valid input
+    while (upperUserInput !== "ROCK" && upperUserInput !== "PAPER" && upperUserInput !== "SCISSORS") {
+        userInput = prompt("Invalid input. Please type rock, paper, or scissors.");
+        upperUserInput = userInput.toUpperCase().trim();
+    }
 
     // check if user input is either rock, paper, or scissors, and store it in user choice
     // initialize a variable called playerChoice
     let playerChoice = '';
 
     // first, check if it's rock
-    if (userInput.toUpperCase() === "ROCK") {
+    if (upperUserInput === "ROCK") {
         playerChoice = "Rock";
     }
 
     // then, check if it's paper
-    else if (userInput.toUpperCase() === "PAPER") {
+    else if (upperUserInput === "PAPER") {
         playerChoice = "Paper";
     }
 
     // finally, check if it's scissors
-    else if (userInput.toUpperCase() === "SCISSORS") {
+    else if (upperUserInput === "SCISSORS") {
         playerChoice = "Scissors";
     }
 
