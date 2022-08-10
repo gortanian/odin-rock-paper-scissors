@@ -43,7 +43,7 @@ function rockPaperScissorsGame() {
                     computerNumberOfWins++;
                 }
                 // update the score
-                updateScore();
+                updateScore(playerNumberOfWins, computerNumberOfWins);
 
                 // reset playerChoice
                 playerChoice = '';
@@ -74,12 +74,38 @@ function rockPaperScissorsRound(playerChoice) {
 
     let winner = getRoundWinner(playerChoice, computerChoice);
 
+    updateChoices(playerChoice, computerChoice);
+    updateResults(winner, playerChoice, computerChoice);
+
     return winner;
 }
 
-function updateScore() {
+function updateScore(playerNumberOfWins, computerNumberOfWins) {
     // update the score div with the current score
-    return;
+    const score = document.querySelector(".score");
+    score.textContent = ("Player: " + playerNumberOfWins + " Computer: " + computerNumberOfWins);
+}
+
+function updateResults(winner, playerChoice, computerChoice) {
+    // update the results div with winner information
+    const results = document.querySelector(".results");
+    if (winner === "player") {
+        results.textContent = (`You win! ${playerChoice} beats ${computerChoice}!`);
+    }
+    else if (winner === "computer") {
+        results.textContent = (`You lose. ${computerChoice} beats ${playerChoice}`)
+    }
+    else if (winner === "tie") {
+        results.textContent = (`It's a tie! You and the computer both chose ${playerChoice}!`);
+    }
+    else {
+        results.textContent = ("error");
+    }
+}
+
+function updateChoices(playerChoice, computerChoice) {
+    const choices = document.querySelector(".choices");
+    choices.textContent = (`You chose ${playerChoice}, the computer chose ${computerChoice}`);
 }
 
 function getRandomComputerChoice() {
@@ -137,7 +163,8 @@ function compareChoice(playerChoice, computerChoice) {
 }
 
 function getRoundWinner(playerChoice, computerChoice) {
-    // print what the computer chose
+    
+    console.log("You chose " + playerChoice);
     console.log("the computer chose " + computerChoice);
 
     // compare the choices, and return the winner
@@ -151,7 +178,7 @@ function getRoundWinner(playerChoice, computerChoice) {
         console.log("You Lose! " + computerChoice + " beats " + playerChoice + "!");
     }
     else if (winner === "tie") {
-        console.log("It's a Tie! you and the computer both chose " + playerChoice);
+        console.log("It's a Tie!");
     }
     else {
         console.log("round winner error. compare choice returned something funky.");
