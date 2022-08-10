@@ -31,7 +31,7 @@ function rockPaperScissorsGame() {
                 playerChoice = "Scissors";
             }
 
-            if (playerChoice) {
+            if (playerChoice && !winnerFound) {
                 let roundWinner = rockPaperScissorsRound(playerChoice);
 
                 // if the winner was player, increment playerNumberOfWins
@@ -90,10 +90,10 @@ function updateResults(winner, playerChoice, computerChoice) {
     // update the results div with winner information
     const results = document.querySelector(".results");
     if (winner === "player") {
-        results.textContent = (`You win! ${playerChoice} beats ${computerChoice}!`);
+        results.textContent = (`You win this round! ${playerChoice} beats ${computerChoice}!`);
     }
     else if (winner === "computer") {
-        results.textContent = (`You lose. ${computerChoice} beats ${playerChoice}`)
+        results.textContent = (`You lose this round. ${computerChoice} beats ${playerChoice}`)
     }
     else if (winner === "tie") {
         results.textContent = (`It's a tie! You and the computer both chose ${playerChoice}!`);
@@ -190,19 +190,23 @@ function getRoundWinner(playerChoice, computerChoice) {
 
 // does stuff for the end of the game
 function endGame (playerNumberOfWins, computerNumberOfWins) {
+    const finalWinner = document.querySelector(".final-winner");
+
     // Determine who the winner is
     let winner = '';
     if (computerNumberOfWins > playerNumberOfWins) {
         winner = "computer";
+        finalWinner.textContent = ("Wah wah. The computer won the game.");
     }
     else if (playerNumberOfWins > computerNumberOfWins) {
         winner = "player";
+        finalWinner.textContent = ("Congrats! You won the game!");
     }
     else if (playerNumberOfWins === computerNumberOfWins) {
         winner = "tie";
+        finalWinner.textContent = ("Tie game! Something went wrong. This should be impossible.");
     }
 
-    // TO-DO: change the UI when the winner is decided
     // print the winner message to the user
     if (winner === "computer") {
         console.log(`Computer wins, final score is ${computerNumberOfWins} to ${playerNumberOfWins}`);
