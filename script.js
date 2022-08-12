@@ -12,9 +12,13 @@ rockPaperScissorsGame();
 // create a new function called rockPaperScissorsGame
 function rockPaperScissorsGame() {
 
-    let playerChoice = null;
     const buttons = document.querySelectorAll(".button");
 
+    // add items for both sides of the scoreboard
+    const playerScoreboard = document.querySelector(".player");
+    const computerScoreboard = document.querySelector(".computer");
+
+    let playerChoice = null;
     let computerNumberOfWins = 0;
     let playerNumberOfWins = 0;
     let winnerFound = false;
@@ -33,6 +37,8 @@ function rockPaperScissorsGame() {
 
             if (playerChoice && !winnerFound) {
                 let roundWinner = rockPaperScissorsRound(playerChoice);
+                playerScoreboard.style.visibility="visible";
+                computerScoreboard.style.visibility="visible";
 
                 // if the winner was player, increment playerNumberOfWins
                 if (roundWinner === "player") {
