@@ -87,9 +87,12 @@ function rockPaperScissorsRound(playerChoice) {
 }
 
 function updateScore(playerNumberOfWins, computerNumberOfWins) {
-    // update the score div with the current score
-    const score = document.querySelector(".score");
-    score.textContent = ("Player: " + playerNumberOfWins + " Computer: " + computerNumberOfWins);
+
+    const playerScoreboard = document.querySelector(".player-score");
+    const computerScoreboard = document.querySelector(".computer-score");
+    
+    playerScoreboard.textContent = (playerNumberOfWins);
+    computerScoreboard.textContent = (computerNumberOfWins);
 }
 
 function updateResults(winner, playerChoice, computerChoice) {
