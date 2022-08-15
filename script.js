@@ -17,6 +17,8 @@ function rockPaperScissorsGame() {
     // add items for both sides of the scoreboard
     const playerScoreboard = document.querySelector(".player");
     const computerScoreboard = document.querySelector(".computer");
+    const mainHeader = document.querySelector(".main-header");
+    const mainContent = document.querySelector(".main-content");
 
     let playerChoice = null;
     let computerNumberOfWins = 0;
@@ -37,8 +39,12 @@ function rockPaperScissorsGame() {
 
             if (playerChoice && !winnerFound) {
                 let roundWinner = rockPaperScissorsRound(playerChoice);
+
                 playerScoreboard.style.visibility="visible";
                 computerScoreboard.style.visibility="visible";
+                mainContent.style.visibility="visible";
+
+                mainHeader.textContent="RPS";
 
                 // if the winner was player, increment playerNumberOfWins
                 if (roundWinner === "player") {

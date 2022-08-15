@@ -1,6 +1,20 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
 .flex-container {
     display: flex;
     justify-content: center;
+    text-align: center;
+}
+
+.center-container {
+    width: 800px;
+}
+
+.main-content {
+    visibility: hidden;
+    height: 100px;
 }
 
 h1 {
@@ -8,6 +22,21 @@ h1 {
     padding: 0px;
 }
 
+.main-header {
+    margin-top: 100px;
+}
+
 .scoreboard {
     visibility: hidden;
+    padding: 100px 0px;
+
+}
+
+button {
+    width: 15%;
+    padding: 10px;
+}
+
+.computer-score, .player-score{
+    font-size: 24px;
 }
